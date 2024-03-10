@@ -23,3 +23,10 @@ datos, ambos incluidos y visibles en cada vista.
 1. Iniciamos el proyecto React con Vite
 2. Configuramos un entorno de pruebas con Vitest
 3. Configuramos Despliege continuo con Github Actions
+4. Comenzamos a leer datos desde la API propuesta.
+   - Dicha API nos permite filtrar la cantidad de campos recibidos, usamos como parámetro de consulta `?fields=name,flags,population,continents` para sólo obtener datos necesarios.
+   - En la respuesta nos da un `max-age` de 1 año, cacheamos la respuesta para evitar llamadas innecesarias. De hecho, revisando el repositorio de la API, la última actualización de los datos es de hace 3 años.
+   - La API provee un método para obtener datos por continente (`region`) pero no da una lista de continentes por si sola. Leemos desde `/all` y preparamos los datos para toda la aplicación
+   - Proponemos un repositorio que centralice el acceso a datos (tanto de red como de cache) con dos métodos:
+     - Devolver datos de continentes
+     - Devolver datos de un continente
