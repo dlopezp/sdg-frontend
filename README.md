@@ -30,3 +30,5 @@ datos, ambos incluidos y visibles en cada vista.
    - Proponemos un repositorio que centralice el acceso a datos (tanto de red como de cache) con dos métodos:
      - Devolver datos de continentes
      - Devolver datos de un continente
+5. Añadimos React Router
+   - En este punto, los test de componente no me aportan demasiado porque no tengo claro que componentes voy a usar, añado cypress con u npequeño test para validar que el enrutado funciona

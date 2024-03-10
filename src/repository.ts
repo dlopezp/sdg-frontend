@@ -27,10 +27,10 @@ export class RestCountriesRepository {
     }
 
     public async getRegionData(regionName: string): Promise<CountryData[]> {
-        if (this.byRegionsData) return this.byRegionsData[regionName]
+        if (this.byRegionsData) return this.byRegionsData[regionName.toLowerCase()]
     
         await this.build()
-        return this.byRegionsData as RegionData[]
+        return this.byRegionsData[regionName.toLowerCase()] as RegionData[]
     }
 
     private async build(): Promise<void> {
@@ -93,8 +93,8 @@ export class RestCountriesRepository {
                         continent.population += country.population
                         regions[continentName] = continent
     
-                        const countries = byRegion[continentName] || []
-                        byRegion[continentName] = [ 
+                        const countries = byRegion[continentName.toLowerCase()] || []
+                        byRegion[continentName.toLowerCase()] = [ 
                             ...countries, 
                             {
                                 name: country.name.common,
@@ -112,3 +112,6 @@ export class RestCountriesRepository {
         this.byRegionsData = byRegion
     }
 }
+
+const repository = new RestCountriesRepository()
+export default repository
