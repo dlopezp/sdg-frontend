@@ -22,3 +22,4 @@ datos, ambos incluidos y visibles en cada vista.
 ## Pasos
 1. Iniciamos el proyecto React con Vite
 2. Configuramos un entorno de pruebas con Vitest
+3. Configuramos Despliege continuo con Github Actions
