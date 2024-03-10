@@ -29,7 +29,8 @@ jobs:
       uses: cypress-io/github-action@v6
       with:
         build: npm run build
-        start: npm start
+        start: npx vite --host
+        wait-on: 'http://localhost:5173'
 
     - name: Build
       run: npm run build
