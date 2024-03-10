@@ -1,19 +1,19 @@
-import repository from '../repository'
+import repository, { RegionData } from '../repository'
 import { Link, useLoaderData } from "react-router-dom"
 
-export async function loader() {
+export async function loader(): Promise<RegionData[]> {
     const data = await repository.getRegionsData() 
-    return { data };
+    return data;
 }
 
 function World() {
-    const { data } = useLoaderData()
+    const data = useLoaderData() as RegionData[]
 
     return <>
         {
             data.map(
-                datum => <div key={datum.name}>
-                    <Link to={`${datum.name.toLowerCase()}`}><strong>{datum.name}</strong></Link>: {datum.population}
+                (region: RegionData) => <div key={region.name}>
+                    <Link to={`${region.name.toLowerCase()}`}><strong>{region.name}</strong></Link>: {region.population}
                 </div>
             )
         }

@@ -17,7 +17,7 @@ const ONE_MONTH = 30 * 24 * ONE_HOUR
 export class RestCountriesRepository {
     private regionsData: RegionData[] | null = null
     private byRegionsData: Record<string, CountryData[]> | null = null
-    private timeout: number | null = null
+    private timeout: NodeJS.Timeout | null = null
 
     public async getRegionsData(): Promise<RegionData[]> {
         if (this.regionsData) return this.regionsData
@@ -30,7 +30,7 @@ export class RestCountriesRepository {
         if (this.byRegionsData) return this.byRegionsData[regionName.toLowerCase()]
     
         await this.build()
-        return this.byRegionsData[regionName.toLowerCase()] as RegionData[]
+        return this.byRegionsData[regionName.toLowerCase()] as CountryData[]
     }
 
     private async build(): Promise<void> {

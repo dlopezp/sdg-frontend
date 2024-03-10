@@ -1,17 +1,23 @@
-import repository from '../repository'
+import repository, { CountryData } from '../repository'
 import { useLoaderData } from "react-router-dom"
 
-export async function loader({ params }) {
+interface Params {
+  params: {
+    continent: string
+  }
+}
+
+export async function loader({ params }: Params): Promise<CountryData[]> {
   const data = await repository.getRegionData(params.continent) 
-  return { data };
+  return data;
 }
 
 function Continent() {
-  const { data } = useLoaderData();
+  const data = useLoaderData() as CountryData[];
   return <>
     {
       data.map(
-        datum => <div key={datum.name}><strong>{datum.name}</strong>: {datum.population}</div>
+        (country: CountryData) => <div key={country.name}><strong>{country.name}</strong>: {country.population}</div>
       )
     }
   </>
