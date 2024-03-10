@@ -22,30 +22,37 @@ export class RestCountriesRepository {
     public async getRegionsData(): Promise<RegionData[]> {
         if (this.regionsData) return this.regionsData
 
-        await this.build()
-        return this.regionsData as RegionData[]
+        const { regionsData } = await this.build()
+        return regionsData
     }
 
     public async getRegionData(regionName: string): Promise<CountryData[]> {
         if (this.byRegionsData) return this.byRegionsData[regionName.toLowerCase()]
     
-        await this.build()
-        return this.byRegionsData[regionName.toLowerCase()] as CountryData[]
+        const { byRegionsData } = await this.build()
+        return byRegionsData[regionName.toLowerCase()]
     }
 
-    private async build(): Promise<void> {
+    private async build(): Promise<{ regionsData: RegionData[], byRegionsData: Record<string, CountryData[]> }> {
         const fromStorage = this.read()
         if (fromStorage) {
             this.save(fromStorage)
             this.processData(fromStorage)
             this.clear()
-            return
+            return {
+                regionsData: this.regionsData as RegionData[],
+                byRegionsData: this.byRegionsData as Record<string, CountryData[]>
+            }
         }
 
         const fromApi = await this.fetchFromApi()
         this.save(fromApi)
         this.processData(fromApi)
         this.clear()
+        return {
+            regionsData: this.regionsData as RegionData[],
+            byRegionsData: this.byRegionsData as Record<string, CountryData[]>
+        }
     }
 
     private save(data: RestCountriesData[]): void {

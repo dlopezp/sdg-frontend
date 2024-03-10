@@ -1,10 +1,5 @@
-import repository, { RegionData } from '../repository'
+import { RegionData } from '../repository'
 import { Link, useLoaderData } from "react-router-dom"
-
-export async function loader(): Promise<RegionData[]> {
-    const data = await repository.getRegionsData() 
-    return data;
-}
 
 function World() {
     const data = useLoaderData() as RegionData[]
