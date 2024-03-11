@@ -40,9 +40,13 @@ function Filters() {
     });
   };
 
+  const handleFocus: React.FocusEventHandler<HTMLInputElement> = (event) => {
+    event.target.select();
+  };
+
   return (
     <>
-      <select onChange={onChangeOperator} defaultValue={operator}>
+      <select onChange={onChangeOperator} value={operator}>
         <option value={FiltersOperator.GT}>{FiltersOperator.GT}</option>
         <option value={FiltersOperator.LT}>{FiltersOperator.LT}</option>
       </select>
@@ -51,6 +55,7 @@ function Filters() {
         // defaultValue={population}
         value={population}
         onChange={onChangePopulation}
+        onFocus={handleFocus}
       />
     </>
   );
