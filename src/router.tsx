@@ -1,6 +1,6 @@
 import { createBrowserRouter } from "react-router-dom";
 import World from "./pages/World.tsx";
-import Continent from "./pages/Continent.tsx";
+import Region from "./pages/Region.tsx";
 import ErrorPage from "./pages/Error.tsx";
 import repository from "./repository.ts";
 import App from "./App.tsx";
@@ -21,11 +21,11 @@ const router = createBrowserRouter(
           element: <World />,
         },
         {
-          path: ":continent",
-          element: <Continent />,
+          path: ":region",
+          element: <Region />,
           loader: async ({ params }) => {
-            const { continent } = params as { continent: string };
-            const data = await repository.getRegionData(continent);
+            const { region } = params as { region: string };
+            const data = await repository.getRegionData(region);
             return data;
           },
         },

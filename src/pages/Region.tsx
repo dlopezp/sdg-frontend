@@ -6,7 +6,7 @@ import { FiltersOperator } from "../components/FiltersOperator";
 import Highcharts from "highcharts";
 import HighchartsReact from "highcharts-react-official";
 
-function Continent() {
+function Region() {
   const data = useLoaderData() as CountryData[];
   const { filters } = useContext(FiltersContext) as FiltersContextType;
 
@@ -76,4 +76,4 @@ function Continent() {
   );
 }
 
-export default Continent;
+export default Region;
