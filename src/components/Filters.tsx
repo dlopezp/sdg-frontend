@@ -8,9 +8,7 @@ import { FiltersOperator } from "./FiltersOperator";
 import { useLocation, useNavigate } from "react-router-dom";
 
 function Filters() {
-  const { filters, setFilters } = useContext(
-    FiltersContext,
-  ) as FiltersContextType;
+  const { filters } = useContext(FiltersContext) as FiltersContextType;
   const navigate = useNavigate();
   const location = useLocation();
 
@@ -23,10 +21,6 @@ function Filters() {
   }
 
   const onChangeOperator: ChangeEventHandler<HTMLSelectElement> = (event) => {
-    setFilters({
-      operator: event.target.value as FiltersOperator,
-      population: filters.population,
-    });
     serializeFiltersOnUrl({
       operator: event.target.value as FiltersOperator,
       population: filters.population,
@@ -34,10 +28,6 @@ function Filters() {
   };
 
   const onChangePopulation: ChangeEventHandler<HTMLInputElement> = (event) => {
-    setFilters({
-      operator: filters.operator,
-      population: Number(event.target.value),
-    });
     serializeFiltersOnUrl({
       operator: filters.operator,
       population: Number(event.target.value),
@@ -49,19 +39,38 @@ function Filters() {
   };
 
   return (
-    <>
-      <select onChange={onChangeOperator} value={operator}>
-        <option value={FiltersOperator.GT}>{FiltersOperator.GT}</option>
-        <option value={FiltersOperator.LT}>{FiltersOperator.LT}</option>
-      </select>
-      <input
-        type="number"
-        // defaultValue={population}
-        value={population}
-        onChange={onChangePopulation}
-        onFocus={handleFocus}
-      />
-    </>
+    <div className="field is-horizontal">
+      <div className="field-label is-align-self-center">
+        <label className="label">Filters</label>
+      </div>
+      <div className="field-body">
+        <div className="field is-flex-grow-0">
+          <div className="control">
+            <div className="select">
+              <select
+                id="filter-operator"
+                onChange={onChangeOperator}
+                value={operator}
+              >
+                <option value={FiltersOperator.GT}>{FiltersOperator.GT}</option>
+                <option value={FiltersOperator.LT}>{FiltersOperator.LT}</option>
+              </select>
+            </div>
+          </div>
+        </div>
+        <div className="field">
+          <p className="control is-expanded"></p>
+          <input
+            id="filter-population"
+            className="input"
+            type="number"
+            value={population}
+            onChange={onChangePopulation}
+            onFocus={handleFocus}
+          />
+        </div>
+      </div>
+    </div>
   );
 }
 

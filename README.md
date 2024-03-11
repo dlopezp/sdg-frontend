@@ -2,7 +2,7 @@
 
 ## Requisitos de aplicación
 - [x] Una vista inicial global que muestre los datos poblacionales por continente.
-- [ ] Un menú de navegación que permita seleccionar un continente y cambiar de vista, para
+- [x] Un menú de navegación que permita seleccionar un continente y cambiar de vista, para
 visualizar los datos poblacionales de los países de la región.
 - [x] Un campo que permita filtrar por el número de población, limitando de esta manera los continentes (vista inicial) o los países (vistas de continente) que cumplan la condición.
 
@@ -33,3 +33,7 @@ datos, ambos incluidos y visibles en cada vista.
 6. No recordaba que Vite no configura el linter. Añado Prettier y los plugins de eslint, así como configuración para Visual Studio Code
 7. Se añade la funcionalidad de filtrado. Utilizo la API de Context de React para tener acceso a los filtros en los diversos componentes. Como añadido, serializamos el filtro en la URL para tener histórico y para poder compartir URLs ya filtradas
 8. Añadimos los gráficos con la libreria Highcharts
+9. Varios cambios juntos:
+   - Saco los datos iniciales (los de los continentes) a un Provider, necesito acceso a ellos en un par de componentes
+   - Añado componentes gráficos y estilos con Bulma
+   - Elimino el cambio de estado en los filtros, con la navegación basta

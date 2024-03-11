@@ -11,14 +11,14 @@ const router = createBrowserRouter(
       path: "/",
       element: <App />,
       errorElement: <ErrorPage />,
+      loader: async () => {
+        const data = await repository.getRegionsData();
+        return data;
+      },
       children: [
         {
           path: "",
           element: <World />,
-          loader: async () => {
-            const data = await repository.getRegionsData();
-            return data;
-          },
         },
         {
           path: ":continent",

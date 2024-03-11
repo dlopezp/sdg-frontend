@@ -1,13 +1,12 @@
 import { useContext } from "react";
-import { RegionData } from "../repository";
-import { useLoaderData } from "react-router-dom";
 import { FiltersContext, FiltersContextType } from "../FiltersProvider";
 import { FiltersOperator } from "../components/FiltersOperator";
 import Highcharts from "highcharts";
 import HighchartsReact from "highcharts-react-official";
+import { DataContext, DataContextType } from "../DataProvider";
 
 function World() {
-  const data = useLoaderData() as RegionData[];
+  const { data } = useContext(DataContext) as DataContextType;
   const { filters } = useContext(FiltersContext) as FiltersContextType;
 
   const regionNames: string[] = [];
@@ -18,7 +17,6 @@ function World() {
         ? region.population > filters.population
         : region.population < filters.population,
     )
-    .sort((r1, r2) => r2.population - r1.population)
     .forEach((region) => {
       regionNames.push(region.name);
       values.push(region.population);
