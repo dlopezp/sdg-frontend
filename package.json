@@ -39,6 +39,7 @@
     "eslint-plugin-vue": "^9.22.0",
     "gh-pages": "^6.1.1",
     "happy-dom": "^13.7.1",
+    "highcharts-react-official": "^3.2.1",
     "localforage": "^1.10.0",
     "match-sorter": "^6.3.4",
     "prettier": "^3.2.5",
