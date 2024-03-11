@@ -3,7 +3,7 @@ function Header() {
     <nav className="navbar" role="navigation" aria-label="main navigation">
       <div className="container">
         <div className="navbar-brand">
-          <a className="navbar-item" href="/">
+          <a className="navbar-item" href="/sgd-frontend/">
             World Population
           </a>
         </div>
