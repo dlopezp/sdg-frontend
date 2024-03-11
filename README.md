@@ -32,3 +32,4 @@ datos, ambos incluidos y visibles en cada vista.
      - Devolver datos de un continente
 5. Añadimos React Router
    - En este punto, los test de componente no me aportan demasiado porque no tengo claro que componentes voy a usar, añado cypress con u npequeño test para validar que el enrutado funciona
+6. No recordaba que Vite no configura el linter. Añado Prettier y los plugins de eslint, así como configuración para Visual Studio Code
