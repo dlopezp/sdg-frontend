@@ -1,4 +1,4 @@
-import { createContext, useEffect, useState } from "react";
+import { ReactNode, createContext, useEffect, useState } from "react";
 import { FiltersOperator } from "./components/FiltersOperator";
 import { useLocation, useSearchParams } from "react-router-dom";
 
@@ -12,10 +12,14 @@ export type FiltersContextType = {
   setFilters: (filters: Filters) => void;
 };
 
+interface Props {
+  children?: ReactNode;
+}
+
 export const FiltersContext = createContext<FiltersContextType | null>(null);
 
-export function FiltersProvider({ children }) {
-  const [searchParams, setSearchParams] = useSearchParams();
+export function FiltersProvider({ children }: Props) {
+  const [searchParams] = useSearchParams();
   const location = useLocation();
 
   const operator =
