@@ -2,7 +2,7 @@ import { ChangeEventHandler, useContext } from "react";
 import {
   FiltersContext,
   FiltersContextType,
-  Filters,
+  Filters as FiltersType,
 } from "../FiltersProvider";
 import { FiltersOperator } from "./FiltersOperator";
 import { useLocation, useNavigate } from "react-router-dom";
@@ -16,7 +16,7 @@ function Filters() {
 
   const { population, operator } = filters;
 
-  function serializeFiltersOnUrl(filters: Filters) {
+  function serializeFiltersOnUrl(filters: FiltersType) {
     navigate(
       `${location.pathname}/?operator=${filters.operator}&population=${filters.population}`,
     );
@@ -28,7 +28,7 @@ function Filters() {
       population: filters.population,
     });
     serializeFiltersOnUrl({
-      operator: event.target.value,
+      operator: event.target.value as FiltersOperator,
       population: filters.population,
     });
   };
@@ -40,7 +40,7 @@ function Filters() {
     });
     serializeFiltersOnUrl({
       operator: filters.operator,
-      population: event.target.value,
+      population: Number(event.target.value),
     });
   };
 
