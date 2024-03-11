@@ -1,9 +1,9 @@
 import { createBrowserRouter } from "react-router-dom";
-import World from "./Pages/World.tsx";
-import Continent from "./Pages/Continent.tsx";
-import ErrorPage from "./Pages/Error.tsx";
-import App from "./App.tsx";
+import World from "./pages/World.tsx";
+import Continent from "./pages/Continent.tsx";
+import ErrorPage from "./pages/Error.tsx";
 import repository from "./repository.ts";
+import App from "./App.tsx";
 
 const router = createBrowserRouter(
   [

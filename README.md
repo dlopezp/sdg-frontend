@@ -33,3 +33,4 @@ datos, ambos incluidos y visibles en cada vista.
 5. Añadimos React Router
    - En este punto, los test de componente no me aportan demasiado porque no tengo claro que componentes voy a usar, añado cypress con u npequeño test para validar que el enrutado funciona
 6. No recordaba que Vite no configura el linter. Añado Prettier y los plugins de eslint, así como configuración para Visual Studio Code
+7. Se añade la funcionalidad de filtrado. Utilizo la API de Context de React para tener acceso a los filtros en los diversos componentes. Como añadido, serializamos el filtro en la URL para tener histórico y para poder compartir URLs ya filtradas
