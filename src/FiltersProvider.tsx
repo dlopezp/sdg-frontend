@@ -2,7 +2,7 @@ import { ReactNode, createContext, useEffect, useState } from "react";
 import { FiltersOperator } from "./components/FiltersOperator";
 import { useLocation, useSearchParams } from "react-router-dom";
 
-type Filters = {
+export type Filters = {
   operator: FiltersOperator;
   population: number;
 };

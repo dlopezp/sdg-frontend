@@ -1,5 +1,9 @@
 import { ChangeEventHandler, useContext } from "react";
-import { FiltersContext, FiltersContextType } from "../FiltersProvider";
+import {
+  FiltersContext,
+  FiltersContextType,
+  Filters,
+} from "../FiltersProvider";
 import { FiltersOperator } from "./FiltersOperator";
 import { useLocation, useNavigate } from "react-router-dom";
 
@@ -12,11 +16,11 @@ function Filters() {
 
   const { population, operator } = filters;
 
-  const serializeFiltersOnUrl = (filters) => {
+  function serializeFiltersOnUrl(filters: Filters) {
     navigate(
       `${location.pathname}/?operator=${filters.operator}&population=${filters.population}`,
     );
-  };
+  }
 
   const onChangeOperator: ChangeEventHandler<HTMLSelectElement> = (event) => {
     setFilters({

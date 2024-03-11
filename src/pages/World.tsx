@@ -1,6 +1,6 @@
 import { useContext } from "react";
 import { RegionData } from "../repository";
-import { Link, useLoaderData } from "react-router-dom";
+import { useLoaderData } from "react-router-dom";
 import { FiltersContext, FiltersContextType } from "../FiltersProvider";
 import { FiltersOperator } from "../components/FiltersOperator";
 import Highcharts from "highcharts";
